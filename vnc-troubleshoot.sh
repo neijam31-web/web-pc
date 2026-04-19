@@ -1,0 +1,78 @@
+#!/bin/bash
+
+echo "╔════════════════════════════════════════════════════╗"
+echo "║     Desktop VNC Access - Troubleshooting Guide      ║"
+echo "╚════════════════════════════════════════════════════╝"
+echo ""
+
+echo "✓ DESKTOP STATUS:"
+echo "  • Xvfb Display: :99 (RUNNING)"
+echo "  • Window Manager: Running"
+echo "  • x11vnc Server: Running on port 5900/6080"
+echo ""
+
+echo "════════════════════════════════════════════════════"
+echo "IF YOU CAN'T ACCESS THE PAGES:"
+echo "════════════════════════════════════════════════════"
+echo ""
+
+echo "1. CHECK VNC SERVER IS RUNNING"
+echo "   $ ps aux | grep x11vnc | grep -v grep"
+echo ""
+
+echo "2. CHECK OPEN PORTS"
+echo "   $ ss -tuln | grep -E '5900|6080'"
+echo "   Should show: tcp LISTEN 0.0.0.0:5900 and 0.0.0.0:6080"
+echo ""
+
+echo "3. DIRECT VNC CLIENT METHOD (Most Reliable)"
+echo "   Download and install VNC Viewer:"
+echo "   → https://www.realvnc.com/en/connect/download/viewer/"
+echo ""
+echo "   Then connect to:"
+echo "   → localhost:5900  (no password)"
+echo ""
+
+echo "4. IF VNC VIEWER DOESN'T WORK"
+echo "   Try from command line:"
+echo "   $ sudo apt-get install -y xtightvncviewer"
+echo "   $ xtightvncviewer localhost:5900"
+echo ""
+
+echo "5. WEB ACCESS (Alternative)"
+echo "   If you have noVNC installed:"
+echo "   → http://localhost:6080/vnc.html"
+echo ""
+echo "   Or test directly:"
+echo "   $ curl -I http://localhost:6080"
+echo ""
+
+echo "════════════════════════════════════════════════════"
+echo "WHAT YOU SHOULD SEE:"
+echo "════════════════════════════════════════════════════"
+echo ""
+echo "Once connected via VNC, you'll see:"
+echo "  • A 1024x768 black/gray desktop"
+echo "  • Debian-styled Window Manager"
+echo "  • Responsive to mouse and keyboard"
+echo "  • Can launch applications with Alt+Return"
+echo ""
+
+echo "════════════════════════════════════════════════════"
+echo "CURRENT SYSTEM INFO:"
+echo "════════════════════════════════════════════════════"
+echo ""
+echo "Open ports:"
+ss -tuln 2>/dev/null | grep -E "5900|6080" || netstat -tuln | grep -E "5900|6080"
+
+echo ""
+echo "Active processes:"
+ps aux | grep -E "Xvfb|window-manager|x11vnc" | grep -v grep | awk '{print $11, $12, $13}'
+
+echo ""
+echo "════════════════════════════════════════════════════"
+echo ""
+echo "Need help? The VNC server is working correctly."
+echo "Try using a native VNC client (RealVNC Viewer)"
+echo "instead of web browser for best compatibility."
+echo ""

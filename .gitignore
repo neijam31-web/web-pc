@@ -1,0 +1,63 @@
+# Build artifacts
+build/
+output/
+*.o
+*.ko
+*.mod.c
+*.mod.o
+*.so
+*.a
+
+# Kernel builds
+kernel/build/
+kernel/output/
+*.img
+*.iso
+vmlinuz*
+System.map*
+.config
+
+# Desktop builds
+desktop/build/
+desktop/bin/
+desktop/*.o
+
+# Module builds
+modules/build/
+modules/*.ko
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.log
+*.out
+
+# Distribution builds
+distro/repo/
+distro/*.deb
+
+# Environment
+.env
+.venv
+venv/
+
+# Test outputs
+test/results/
+*.test.log

@@ -1,0 +1,3 @@
+obj - m += custom_module.o
+
+custom_module - objs := custom_module.o
